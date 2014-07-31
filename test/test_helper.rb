@@ -2,12 +2,17 @@ ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../../config/environment', __FILE__)
 require 'rails/test_help'
 
-class ActiveSupport::TestCase
-  # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
-  #
-  # Note: You'll currently still have to declare fixtures explicitly in integration tests
-  # -- they do not yet inherit this setting
-  fixtures :all
+require 'minitest/autorun'
+require 'dock_test'
 
-  # Add more helper methods to be used by all tests here...
+# the following block sets the DockTest configuration
+# if many environment is involved, a services.yml file may organize things better.
+DockTest.configure do |c|
+  c.url = case ENV['DOCK_ENV']
+          when 'production'
+            'http://still-castle-9991.herokuapp.com/'
+          else
+            'http://localhost:9871'
+          end
+  c.skippy = :production
 end

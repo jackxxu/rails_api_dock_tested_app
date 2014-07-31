@@ -1,7 +1,5 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.1.1'
-
 gem 'rails-api'
 
 gem 'spring', :group => :development
@@ -10,17 +8,9 @@ gem 'rake'
 gem 'bundler'
 gem 'multi_json'
 
-# To use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.1.2'
+group :test do
+  gem 'guard-jruby-minitest', '0.1.7'
+  gem 'terminal-notifier-guard'
+  gem 'dock_test', '0.1.1'
+end
 
-# To use Jbuilder templates for JSON
-# gem 'jbuilder'
-
-# Use unicorn as the app server
-# gem 'unicorn'
-
-# Deploy with Capistrano
-# gem 'capistrano', :group => :development
-
-# To use debugger
-# gem 'ruby-debug19', :require => 'ruby-debug'
